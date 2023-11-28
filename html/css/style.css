@@ -1,0 +1,255 @@
+:root{ /*forma de almacenar variables*/
+   --blanco: #ffffff;
+   --oscuro: #212121;
+   --primario: #ffc107;
+   --secundario: #0097a7;
+   --gris: #757575;
+}
+html{
+   box-sizing: border-box;
+   scroll-snap-type: y mandatory;
+}
+/*scroll snap*/
+.servicios,
+.navegacion-p,
+.formulario{
+   scroll-snap-align: center;
+   scroll-snap-stop: always;
+}
+/*selecciona todo los elementos del html y aplica cambios */
+*, *:before, *:after{
+   box-sizing: inherit; /*no deja que el padding afecte el tamaño del componente*/
+}
+body{
+   font-family: 'Titillium Web', sans-serif;
+   background-image: linear-gradient(to top,#d3e1f0 0%, var(--blanco)100%);
+}
+h1{
+   font-size: 2.2rem;
+}
+h2{
+   font-size: 2.0rem;
+}
+h3{
+   font-size: 1.8rem;
+}
+h1,h2,h3{
+   text-align: center;
+}
+
+.titulo{
+   color: var(--primario);
+   margin-bottom: 1rem;
+}
+
+.titulo span{ /*aplica al span dentro de un h1*/
+   font-size: 1rem;
+   color: rgb(2, 53, 36);
+}
+.nav-bg{
+   background-color: var(--secundario);
+
+}
+
+.navegacion-p{
+   display: flex; 
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   
+}
+/*va de 768 en adelante*/
+@media (min-width: 768px ){
+   .navegacion-p{
+      flex-direction: row;
+   }
+}   
+.contenedor{
+   max-width: 52rem;
+   margin: 0 auto;
+   border-radius: .6rem;
+}
+.boton{
+   background-color: var(--secundario);
+   color: var(--blanco);
+   padding: .8rem 1.6rem;
+   margin-top:1.5rem;
+   text-decoration: none;
+   border-radius: .7rem;
+   font-size: 1.2rem;
+   text-transform: uppercase;
+   font-weight: bold;
+   width: 80%;
+   text-align: center;
+   border: none;
+}
+@media (min-width: 768px){
+   .boton{
+      width: auto;
+   }
+}
+.boton:hover{
+   background-color: var(--primario);
+   color: var(--oscuro);
+}
+.sombra{
+   --webkit-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112,0.54);/*estilo para chrome*/
+   -moz-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112,0.54);/*estilo para firefox*/
+   box-shadow: 0px 5px 15px 0px rgba(112, 112, 112,0.54);
+   background-color: var(--blanco);
+   padding: 2rem;
+}
+/*utilidades--------------*/
+.w100{
+   width: 100%;
+}
+@media(min-width:768px){
+   .w100{
+      width: auto;
+      margin-top: 2rem;
+   }
+}
+.flex{
+ display: flex;
+}
+.alinear{
+ justify-content: flex-end;
+}
+/*------------------------*/
+.enlace{
+   color: var(--blanco);
+   text-decoration: none;
+   font-size: 1.2rem;
+   font-weight: bold;
+   padding: 1rem;
+}
+
+.enlace:hover{
+   background-color: var(--primario);
+   color: var(--oscuro);
+}
+.hero{
+   background-image: url(https://www.ros1.com/wp-content/uploads/2021/12/escritorio-con-ruedas-home-office-scaled.jpg);
+   background-repeat: no-repeat;
+   background-size:cover;
+   height: 450px;
+  margin-bottom: 1rem;
+   position: relative; /*padre siempre posi.. relativa
+   para que el hijo pueda tener poscion absoluta*/
+}
+.contenido-hero{
+   position: absolute;
+   background-color: rgba(0,0,0, .5); /*anterior*/
+   background-color: rgba(0 0 0/50%);
+   width: 100%;
+   height: 100%;
+   display: flex; /*para posicionar bien el contenido hijo se utiliza esto 
+   en el contenido padre
+   ---- alineacion centrada*/
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+.contenido-hero h2,
+.contenido-hero p{
+   color: var(--blanco);
+}
+.contenido-hero .ubicacion{
+   display: flex;
+   align-items: flex-end;
+}  
+/*servicios*/
+
+@media(min-width:768px){
+   .servicios{
+      display: grid;
+      /* opcion 1 cuadrar los espacios 
+      grid-template-columns: 300px 300px;
+      grid-template-rows: 200px 800px;
+      
+      opcion 2 mas facil
+      grid: 200px 800px/ 300px 300px;*/
+      grid-template-columns: repeat(3, 1fr); /*divide contenedor en 3*/
+      column-gap: 1rem ;
+   } 
+}
+.servicio{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.servicio h3{
+ color: var(--secundario);
+ font-weight: normal;
+ 
+}
+.servicio p{
+   line-height: 2;
+   text-align: center;
+}
+.servicio .iconos{
+   height: 6rem;
+   width: 6rem;
+   background-color: var(--primario);
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+/*contacto*/
+.formulario{
+   background-color: var(--gris);
+   width: min(25rem, 100%); /*utilizar el valor mas paqueño*/
+   margin: 0 auto; /*se usa en formularios y cuyo padre no es disply flex*/
+   padding: 1rem;
+   border-radius: 1rem;
+}
+.formulario fieldset{
+   border: none;
+}
+.formulario legend{
+   text-align: center;
+   font-size: 1rem;
+   text-transform: uppercase;
+   font-weight: 700;
+   margin-bottom: 1rem;
+   color: var(--primario);
+}
+
+@media(min-width:768px){
+   .contenedor-campos{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: auto auto 10rem;
+      column-gap: 1rem;
+   }
+   .campo:nth-child(3),
+   .campo:nth-child(4){/*forma para select del campo correo por la posicion*/
+      grid-column: 1/3; 
+   }
+
+}
+
+.campo{
+   margin-bottom: 1rem;
+}
+.campo label{
+   font-weight: bold;
+   color: var(--blanco);
+   margin-bottom: 0.5rem;
+   display: block;
+}
+.campo .input-text{
+   width: 100%;
+   border: none;
+   padding: .8rem;
+   border-radius: 1rem;
+}
+.campo textarea{
+   height: 10rem;
+}
+
+.footer{
+   text-align: center;
+   font-weight: bold;
+}
